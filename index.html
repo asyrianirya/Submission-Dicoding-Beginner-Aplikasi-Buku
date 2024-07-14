@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		<title>Aplikasi Data Buku</title>
+		<link rel="stylesheet" href="assets/css/style.css">
+	</head>
+	
+	<body>
+		<header class="navbar-container">
+			<div class="jumbotron">
+				<h1>Aplikasi Data Buku</h1>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<div>
+							<a onclick="scrollToElement('input-nav')">Input</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a onclick="scrollToElement('readed-nav')">Daftar buku yang sudah dibaca</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a onclick="scrollToElement('unreaded-nav')" >Daftar buku yang belum dibaca</a>
+						</div>
+					</li>
+					<li class="search_section" >
+						<input placeholder="Cari" id="searchBook" type="text">
+						<select class="dropdown btn" id="filterSelect">
+						</select>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<div id="content">
+				<div id="content-header">
+					<div id="post-title">
+						<h1>Aplikasi Data Rak Buku</h1>
+						<p><a href="https://www.instagram.com/asyrianirya02/?hl=id">@asyrianirya</a>, Februari 2024</p>
+					</div>
+					<div id="post-explain">
+						<p>Aplikasi web ini saya buat untuk keperluan submission sebagai hasil dari buah kerja saya selama belajar bersama dicoding.</p>
+					</div>
+					
+				</div>
+				<section class="card input_section">
+					
+					<h2 class="title" id="input-nav">INPUT BUKU</h2>
+					
+					<p>Masukkan Buku Baru</p>
+					<form id="inputBook">
+						<div class="input_group">
+							<div class="input">
+								<label for="inputBookTitle">Judul</label>
+								<input id="inputBookTitle" type="text" required>
+							</div>
+							<div class="input">
+								<label for="inputBookAuthor">Penulis</label>
+								<input id="inputBookAuthor" type="text" required>
+							</div>
+							<div class="input">
+								<label for="inputBookYear">Tahun</label>
+								<input id="inputBookYear" type="number" required>
+							</div>
+							<div class="input_inline">
+								<label for="inputBookIsComplete">Selesai dibaca</label>
+								<input id="inputBookIsComplete" type="checkbox" value="false">
+							</div>
+						</div>
+						<div>
+							<button id="bookSubmit" type="submit">Masukkan Buku ke rak <span>Belum selesai dibaca</span></button>
+						</div>
+					</form>
+				</section>
+				
+				<section class="card book_shelf">
+					<h2 class="title" id="unreaded-nav">BUKU YANG BELUM DIBACA</h2>
+					<div id="incompleteBookshelfList" class="book_list"></div>
+				</section>
+				
+				<section class="card book_shelf">
+					<h2 class="title" id="readed-nav">BUKU YANG SUDAH DIBACA</h2>
+					<div id="completeBookshelfList" class="book_list"></div>
+				</section>
+				
+				
+			</div>
+			
+			<aside>
+				<section class="card small">
+					<header>
+						<h2>My Profile</h2><hr/>
+						<img src="data:image/jpeg;base64," alt="Author" oncontextmenu="return false;" draggable="false">
+					</header>
+					<section>
+						<table border="0">
+							<tr>
+								<td>Nama</td>
+								<td>:</td>
+								<td>Anon</td>
+							</tr>
+							<tr>
+								<td>Prodi</td>
+								<td>:</td>
+								<td>Teknologi</td>
+							</tr>
+							<tr>
+								<td>Nama Kampus</td>
+								<td>:</td>
+								<td>PRO TEC</td>
+							</tr>
+						</table>
+					</section>
+				</section>
+			</aside>
+		</main>
+		
+		<footer>
+			<p>2024 by Asyrianirya</p>
+		</footer>
+		
+		<div id="confirmToDelete" class="modal">
+			<div class="modal-content">
+				<h2 class="title" style="display: inline-block;">Perintah penghapusan</h2>
+				<p>Anda akan menghapus buku dengan detail:</p>
+				<div id="bookDetail">
+					<table>
+						<tr>
+							<td>ID</td>
+							<td id="book_id"></td>
+						</tr>
+						<tr>
+							<td>Judul</td>
+							<td id="book_title"></td>
+						</tr>
+						<tr>
+							<td>Penulis</td>
+							<td id="book_author"></td>
+						</tr>
+						<tr>
+							<td>Tahun</td>
+							<td id="book_year"></td>
+						</tr>
+					</table>
+				</div>
+				<p>Apakah anda yakin ingin melanjutkan?</p>
+				<button id="closeModal" class="btn btn-success">Tidak jadi!</button>
+			</div>
+		</div>
+		
+		<script src="assets/js/main.js"></script>
+	</body>
+	
+	<script>
+		function scrollToElement(id) {
+			let element = document.getElementById(id);
+			if (element) {
+				let offset = 100; 
+				let elementPosition = element.offsetTop - offset;
+				
+				window.scrollTo({
+					top: elementPosition,
+					behavior: "smooth"
+				});
+			}
+		}
+	</script>
+	
+</html>
+
